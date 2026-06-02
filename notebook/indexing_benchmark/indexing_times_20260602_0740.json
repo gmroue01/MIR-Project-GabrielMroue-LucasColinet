@@ -1,0 +1,91 @@
+{
+  "timestamp": "20260602_0740",
+  "device": "cuda:Tesla T4",
+  "n_images": 5012,
+  "descriptors": {
+    "color_histogram": {
+      "indexing_time_s": 216.385,
+      "extraction_time_s": 216.385,
+      "pca_time_s": 0.0,
+      "descriptor_dim": 24,
+      "original_dim": null,
+      "num_images": 5012,
+      "device": "cpu"
+    },
+    "sift": {
+      "indexing_time_s": 529.216,
+      "extraction_time_s": 529.216,
+      "pca_time_s": 0.0,
+      "descriptor_dim": 128,
+      "original_dim": null,
+      "num_images": 5012,
+      "device": "cpu"
+    },
+    "mobilenet_arcface": {
+      "indexing_time_s": 76.09,
+      "extraction_time_s": 75.43,
+      "pca_time_s": 0.67,
+      "descriptor_dim": 49,
+      "original_dim": 1280,
+      "num_images": 5012,
+      "device": "cuda:Tesla T4",
+      "model_type": "pretrained",
+      "backbone": "mobilenetv2"
+    },
+    "mobilenet_zeroshot": {
+      "indexing_time_s": 77.1,
+      "extraction_time_s": 75.43,
+      "pca_time_s": 1.67,
+      "descriptor_dim": 257,
+      "original_dim": 1280,
+      "num_images": 5012,
+      "device": "cuda:Tesla T4",
+      "model_type": "pretrained",
+      "backbone": "mobilenetv2"
+    },
+    "resnet50_zeroshot": {
+      "indexing_time_s": 88.14,
+      "extraction_time_s": 82.88,
+      "pca_time_s": 5.26,
+      "descriptor_dim": 256,
+      "original_dim": 2048,
+      "num_images": 5012,
+      "device": "cuda:Tesla T4",
+      "model_type": "pretrained",
+      "backbone": "resnet50"
+    },
+    "vit_b16_zeroshot": {
+      "indexing_time_s": 130.67,
+      "extraction_time_s": 130.49,
+      "pca_time_s": 0.18,
+      "descriptor_dim": 230,
+      "original_dim": 768,
+      "num_images": 5012,
+      "device": "cuda:Tesla T4",
+      "model_type": "pretrained",
+      "backbone": "vit_base"
+    },
+    "dinov2_supcon": {
+      "indexing_time_s": 298.73,
+      "extraction_time_s": 298.67,
+      "pca_time_s": 0.06,
+      "descriptor_dim": 13,
+      "original_dim": 384,
+      "num_images": 5012,
+      "device": "cuda:Tesla T4",
+      "model_type": "pretrained",
+      "backbone": "dinov2"
+    },
+    "dinov2_zeroshot": {
+      "indexing_time_s": 298.72,
+      "extraction_time_s": 298.67,
+      "pca_time_s": 0.05,
+      "descriptor_dim": 13,
+      "original_dim": 384,
+      "num_images": 5012,
+      "device": "cuda:Tesla T4",
+      "model_type": "pretrained",
+      "backbone": "dinov2"
+    }
+  }
+}

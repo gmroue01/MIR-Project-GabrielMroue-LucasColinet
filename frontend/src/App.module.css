@@ -1,0 +1,207 @@
+/* ── Global reset ─────────────────────────────────────────── */
+:global(*) { margin: 0; padding: 0; box-sizing: border-box; }
+
+:global(body) {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow: hidden;
+  height: 100vh;
+  background: #07080d;
+  color: #e2e8f0;
+}
+
+:global(::-webkit-scrollbar)       { width: 4px; }
+:global(::-webkit-scrollbar-track) { background: transparent; }
+:global(::-webkit-scrollbar-thumb) { background: rgba(139,92,246,.35); border-radius: 4px; }
+
+/* ── Stars / nebula background ────────────────────────────── */
+.stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 18% 55%, rgba(109,40,217,.09) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 40% at 82% 22%, rgba(6,182,212,.07) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 55% at 55% 95%, rgba(139,92,246,.05) 0%, transparent 55%),
+    radial-gradient(1px 1px at  7% 11%, rgba(255,255,255,.6), transparent),
+    radial-gradient(1px 1px at 15% 34%, rgba(255,255,255,.4), transparent),
+    radial-gradient(1.5px 1.5px at 23%  7%, rgba(255,255,255,.65), transparent),
+    radial-gradient(1px 1px at 32% 51%, rgba(255,255,255,.3), transparent),
+    radial-gradient(1px 1px at 41% 77%, rgba(255,255,255,.5), transparent),
+    radial-gradient(1.5px 1.5px at 49% 22%, rgba(255,255,255,.55), transparent),
+    radial-gradient(1px 1px at 59% 40%, rgba(255,255,255,.35), transparent),
+    radial-gradient(1px 1px at 67% 88%, rgba(255,255,255,.5), transparent),
+    radial-gradient(1.5px 1.5px at 75% 15%, rgba(255,255,255,.45), transparent),
+    radial-gradient(1px 1px at 83% 62%, rgba(255,255,255,.6), transparent),
+    radial-gradient(1px 1px at 91% 36%, rgba(255,255,255,.3), transparent),
+    radial-gradient(1px 1px at  4% 70%, rgba(255,255,255,.45), transparent),
+    radial-gradient(1px 1px at 13% 91%, rgba(255,255,255,.35), transparent),
+    radial-gradient(1.5px 1.5px at 21% 54%, rgba(255,255,255,.25), transparent),
+    radial-gradient(1px 1px at 30% 19%, rgba(255,255,255,.6), transparent),
+    radial-gradient(1px 1px at 38% 43%, rgba(255,255,255,.4), transparent),
+    radial-gradient(1.5px 1.5px at 46% 67%, rgba(255,255,255,.5), transparent),
+    radial-gradient(1px 1px at 55% 89%, rgba(255,255,255,.35), transparent),
+    radial-gradient(1px 1px at 63%  6%, rgba(255,255,255,.55), transparent),
+    radial-gradient(1px 1px at 71% 30%, rgba(255,255,255,.3), transparent),
+    radial-gradient(1.5px 1.5px at 79% 74%, rgba(255,255,255,.45), transparent),
+    radial-gradient(1px 1px at 88% 48%, rgba(255,255,255,.6), transparent),
+    radial-gradient(1px 1px at 96% 82%, rgba(255,255,255,.35), transparent),
+    radial-gradient(1px 1px at  3% 41%, rgba(255,255,255,.5), transparent),
+    radial-gradient(1.5px 1.5px at 19% 79%, rgba(255,255,255,.55), transparent),
+    radial-gradient(1px 1px at 27%  4%, rgba(255,255,255,.4), transparent),
+    radial-gradient(1.5px 1.5px at 52% 54%, rgba(255,255,255,.6), transparent),
+    radial-gradient(1px 1px at 69% 17%, rgba(255,255,255,.5), transparent),
+    radial-gradient(1.5px 1.5px at 86%  2%, rgba(255,255,255,.55), transparent),
+    radial-gradient(1.5px 1.5px at 22% 44%, rgba(34,211,238,.5), transparent),
+    radial-gradient(1px 1px at 57% 14%, rgba(34,211,238,.4), transparent),
+    radial-gradient(1.5px 1.5px at 73% 61%, rgba(34,211,238,.35), transparent),
+    radial-gradient(1.5px 1.5px at 39% 34%, rgba(139,92,246,.45), transparent),
+    radial-gradient(1.5px 1.5px at 84% 24%, rgba(139,92,246,.4), transparent),
+    #07080d;
+}
+
+/* ── App shell ────────────────────────────────────────────── */
+.app {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Navbar ───────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  background: rgba(7,8,13,.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  color: #e2e8f0;
+  text-transform: uppercase;
+}
+
+.star { color: #8b5cf6; }
+.navLinks { display: flex; gap: .5rem; }
+
+.navBtn {
+  background: none;
+  border: 1px solid transparent;
+  color: #64748b;
+  padding: .35rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: .8rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  transition: all .2s;
+}
+.navBtn:hover { color: #e2e8f0; border-color: rgba(255,255,255,.08); }
+.navOn { color: #a78bfa; border-color: rgba(139,92,246,.3); background: rgba(139,92,246,.08); }
+
+/* ── Step dots (right side) ───────────────────────────────── */
+.stepNav {
+  position: fixed;
+  right: 1.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 50;
+}
+
+.dot {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.dotRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,.12);
+  transition: border-color .3s, box-shadow .3s;
+}
+
+.dotCore {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.2);
+  transition: all .3s;
+  position: relative;
+  z-index: 1;
+}
+
+.dot:hover:not(.dotOff) .dotRing { border-color: rgba(139,92,246,.5); }
+.dot:hover:not(.dotOff) .dotCore { background: rgba(139,92,246,.7); width: 7px; height: 7px; }
+.dotOn .dotRing { border-color: #8b5cf6; box-shadow: 0 0 10px rgba(139,92,246,.6); }
+.dotOn .dotCore { background: #8b5cf6; width: 7px; height: 7px; box-shadow: 0 0 8px rgba(139,92,246,.9); }
+.dotOff { opacity: .28; cursor: not-allowed; }
+
+.dotLbl {
+  position: absolute;
+  right: 32px;
+  font-size: .65rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #475569;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s;
+}
+.dot:hover .dotLbl, .dotOn .dotLbl { opacity: 1; color: #a78bfa; }
+
+.line { width: 1.5px; height: 30px; background: rgba(255,255,255,.08); transition: background .5s; }
+.lineDone { background: linear-gradient(to bottom, #8b5cf6, rgba(139,92,246,.25)); }
+
+/* ── Viewport + slider ────────────────────────────────────── */
+.viewport {
+  position: fixed;
+  top: 56px; left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+  transition: transform .85s cubic-bezier(.83,0,.17,1);
+}
+
+.slide {
+  height: calc(100vh - 56px);
+  flex-shrink: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Benchmark page wrapper ───────────────────────────────── */
+.benchWrap {
+  position: fixed;
+  top: 56px; left: 0; right: 0; bottom: 0;
+  overflow-y: auto;
+  z-index: 10;
+}

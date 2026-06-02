@@ -1,0 +1,14 @@
+services:
+  mir:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      # Données volumineuses montées en dehors de l'image
+      # → ajouter index_images_align.faiss ici sans rebuilder l'image
+      - ./indexes_faiss:/app/indexes_faiss:ro
+      - ./dataset:/app/dataset:ro
+      - ./Flickr8K:/app/Flickr8K:ro
+    restart: unless-stopped
+    environment:
+      - PYTHONUNBUFFERED=1

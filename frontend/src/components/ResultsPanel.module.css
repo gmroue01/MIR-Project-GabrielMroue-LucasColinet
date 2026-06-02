@@ -1,0 +1,138 @@
+.panel { display: flex; flex-direction: column; gap: 16px; }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: #1a1d27;
+  border: 1px solid #2d3148;
+  border-radius: 12px;
+  padding: 12px 16px;
+}
+
+.queryBox { display: flex; align-items: center; gap: 12px; }
+
+.queryImg {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 2px solid #60a5fa;
+  flex-shrink: 0;
+}
+
+.queryInfo { display: flex; flex-direction: column; gap: 2px; }
+
+.queryLabel { font-size: 0.7rem; color: #7c8db5; text-transform: uppercase; letter-spacing: 0.8px; }
+
+.queryClass { font-size: 0.88rem; font-weight: 600; color: #60a5fa; }
+
+.queryFile { font-size: 0.72rem; color: #4b5a7a; }
+
+.actions { display: flex; align-items: center; gap: 10px; }
+
+.viewToggle { display: flex; gap: 4px; }
+
+.toggleBtn {
+  background: #0f1117;
+  border: 1px solid #2d3148;
+  color: #7c8db5;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: all 0.15s;
+}
+
+.toggleBtn:hover { border-color: #60a5fa; color: #e2e8f0; }
+
+.toggleActive {
+  background: #1e3a5f;
+  border-color: #60a5fa;
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.backBtn {
+  background: none;
+  border: 1px solid #2d3148;
+  color: #7c8db5;
+  padding: 6px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  transition: all 0.15s;
+}
+
+.backBtn:hover { border-color: #60a5fa; color: #e2e8f0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.card {
+  position: relative;
+  background: #1a1d27;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  border: 2px solid transparent;
+  aspect-ratio: 4/3;
+  transition: transform 0.1s;
+}
+
+.card:hover { transform: scale(1.03); }
+
+.relevant { border-color: #22c55e40; }
+.irrelevant { border-color: #ef444420; }
+
+.rank {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 5px;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.badgeOk { background: #16a34a; color: #fff; }
+.badgeKo { background: #dc2626; color: #fff; }
+
+.dist {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  background: rgba(0,0,0,0.7);
+  color: #94a3b8;
+  font-size: 0.65rem;
+  padding: 1px 4px;
+  border-radius: 3px;
+  z-index: 1;
+  font-variant-numeric: tabular-nums;
+}

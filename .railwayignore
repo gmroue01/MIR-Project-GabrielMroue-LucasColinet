@@ -1,0 +1,15 @@
+.venv/
+Flickr8K/
+Flickr8k/
+dataset/
+indexes_faiss/
+dataset.zip
+datatset.tar.gz
+*.tar.gz
+*.zip
+colab_training.ipynb
+MIR_Clip_uses.ipynb
+MIR_ALIGN_indexing.ipynb
+server_err.txt
+server_out.txt
+problemeVM.md

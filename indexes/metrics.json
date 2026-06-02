@@ -1,0 +1,80 @@
+{
+  "color_histogram": {
+    "indexing_time_s": 216.385,
+    "descriptor_size_mb": 0.3931,
+    "avg_search_time_s": 3e-05,
+    "num_images": 5012,
+    "descriptor_dim": 24,
+    "failed": 0,
+    "source": "computed"
+  },
+  "sift": {
+    "indexing_time_s": 529.216,
+    "descriptor_size_mb": 2.1069,
+    "avg_search_time_s": 9.5e-05,
+    "num_images": 5012,
+    "descriptor_dim": 128,
+    "failed": 0,
+    "source": "computed"
+  },
+  "dinov2_supcon": {
+    "indexing_time_s": 298.73,
+    "descriptor_size_mb": 0.2265,
+    "avg_search_time_s": 3.2e-05,
+    "num_images": 5012,
+    "descriptor_dim": 13,
+    "original_dim": 256,
+    "failed": 0,
+    "source": "precomputed"
+  },
+  "dinov2_zeroshot": {
+    "indexing_time_s": 298.72,
+    "descriptor_size_mb": 0.2265,
+    "avg_search_time_s": 3.3e-05,
+    "num_images": 5012,
+    "descriptor_dim": 13,
+    "original_dim": 256,
+    "failed": 0,
+    "source": "precomputed"
+  },
+  "mobilenet_arcface": {
+    "indexing_time_s": 76.09,
+    "descriptor_size_mb": 0.858,
+    "avg_search_time_s": 5.7e-05,
+    "num_images": 5012,
+    "descriptor_dim": 49,
+    "original_dim": 256,
+    "failed": 0,
+    "source": "precomputed"
+  },
+  "mobilenet_zeroshot": {
+    "indexing_time_s": 77.1,
+    "descriptor_size_mb": 4.5229,
+    "avg_search_time_s": 0.000108,
+    "num_images": 5012,
+    "descriptor_dim": 257,
+    "original_dim": 1280,
+    "failed": 0,
+    "source": "precomputed"
+  },
+  "resnet50_zeroshot": {
+    "indexing_time_s": 88.14,
+    "descriptor_size_mb": 4.5101,
+    "avg_search_time_s": 9.8e-05,
+    "num_images": 5012,
+    "descriptor_dim": 256,
+    "original_dim": 2048,
+    "failed": 0,
+    "source": "precomputed"
+  },
+  "vit_b16_zeroshot": {
+    "indexing_time_s": 130.67,
+    "descriptor_size_mb": 4.043,
+    "avg_search_time_s": 0.000106,
+    "num_images": 5012,
+    "descriptor_dim": 230,
+    "original_dim": 768,
+    "failed": 0,
+    "source": "precomputed"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "model": "recall_curve_MobileNetV2_ArcFace",
+  "recall": {
+    "@1": 53.67,
+    "@5": 74.6,
+    "@20": 87.99,
+    "@50": 94.95
+  },
+  "mAP": 11.91,
+  "n_images": 5012
+}

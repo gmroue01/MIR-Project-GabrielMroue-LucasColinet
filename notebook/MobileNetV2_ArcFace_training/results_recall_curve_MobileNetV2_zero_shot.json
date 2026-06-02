@@ -1,0 +1,11 @@
+{
+  "model": "recall_curve_MobileNetV2_zero_shot",
+  "recall": {
+    "@1": 31.03,
+    "@5": 56.76,
+    "@20": 81.6,
+    "@50": 93.64
+  },
+  "mAP": 1.5,
+  "n_images": 5012
+}

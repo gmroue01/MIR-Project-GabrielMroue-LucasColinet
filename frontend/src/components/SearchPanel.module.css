@@ -1,0 +1,108 @@
+.panel {
+  background: #1a1d27;
+  border: 1px solid #2d3148;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  letter-spacing: 0.3px;
+}
+
+.section { display: flex; flex-direction: column; gap: 8px; }
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #7c8db5;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.hint { font-size: 0.78rem; color: #7c8db5; font-style: italic; }
+
+.queryPreview {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #0f1117;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+.queryThumb {
+  width: 56px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.queryName {
+  font-size: 0.78rem;
+  color: #60a5fa;
+  word-break: break-word;
+}
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.chip {
+  background: #0f1117;
+  border: 1px solid #2d3148;
+  color: #9aa3bd;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.chip:hover { border-color: #60a5fa; color: #e2e8f0; }
+
+.chipActive {
+  background: #1e3a5f;
+  border-color: #60a5fa;
+  color: #60a5fa;
+  font-weight: 600;
+}
+
+.chipDisabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.chipSoon { opacity: .45; cursor: not-allowed; border-style: dashed; }
+.soonBadge { font-size: .6rem; background: rgba(99,102,241,.15); color: #a5b4fc; border-radius: 4px; padding: 1px 4px; margin-left: 4px; vertical-align: middle; }
+
+.topkRow { display: flex; gap: 8px; }
+
+.error {
+  font-size: 0.8rem;
+  color: #f87171;
+  background: #2d1515;
+  border: 1px solid #7f1d1d;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.searchBtn {
+  background: #2563eb;
+  border: none;
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  width: 100%;
+}
+
+.searchBtn:hover:not(:disabled) { background: #1d4ed8; }
+.searchBtn:disabled { opacity: 0.5; cursor: not-allowed; }

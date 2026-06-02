@@ -1,0 +1,376 @@
+.step {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-right: 60px;
+}
+
+/* ── Header ─────────────────────────────────────────────────── */
+.head {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 2rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.stepId {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: rgba(139,92,246,.15);
+  letter-spacing: -.02em;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.sub {
+  font-size: .78rem;
+  color: #64748b;
+  margin-top: .25rem;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  flex-wrap: wrap;
+}
+
+.cls { color: #c4b5fd; }
+.sep { color: #334155; }
+
+.newSearchBtn {
+  margin-left: auto;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.09);
+  color: #64748b;
+  padding: .35rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: .8rem;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.newSearchBtn:hover { color: #e2e8f0; border-color: rgba(255,255,255,.18); }
+
+/* ── Body ────────────────────────────────────────────────────── */
+.body {
+  flex: 1;
+  display: flex;
+  gap: 0;
+  overflow: hidden;
+}
+
+/* Left: metric groups */
+.metricsPanel {
+  width: 55%;
+  border-right: 1px solid rgba(255,255,255,.06);
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+}
+
+.group {
+  background: rgba(255,255,255,.025);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: .9rem;
+}
+
+.groupTitle {
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: #475569;
+  padding-bottom: .6rem;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+
+.metricRow { display: flex; flex-direction: column; gap: .3rem; }
+
+.metricTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.metricLabel { font-size: .78rem; color: #94a3b8; }
+
+.metricValue {
+  font-size: 1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar {
+  height: 4px;
+  background: rgba(255,255,255,.07);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width .8s cubic-bezier(.17,.67,.83,.67);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem 1.25rem;
+  padding-top: .25rem;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .7rem;
+  color: #64748b;
+}
+
+.legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Right: MAP panel */
+.mapPanel {
+  flex: 1;
+  padding: 1.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  overflow-y: auto;
+}
+
+.mapHeader { display: flex; flex-direction: column; gap: .2rem; }
+
+.mapTitle {
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: #475569;
+}
+
+.mapSub { font-size: .72rem; color: #334155; }
+
+/* CTA before compute */
+.mapCta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: rgba(255,255,255,.025);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+}
+
+.mapDesc {
+  font-size: .82rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.configPill {
+  background: rgba(139,92,246,.08);
+  border: 1px solid rgba(139,92,246,.2);
+  color: #a78bfa;
+  padding: .35rem .8rem;
+  border-radius: 20px;
+  font-size: .72rem;
+  align-self: flex-start;
+}
+
+.mapBtn {
+  background: linear-gradient(135deg, #7c3aed, #6366f1);
+  border: none;
+  color: white;
+  padding: .65rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: .875rem;
+  font-weight: 500;
+  align-self: flex-start;
+  transition: all .2s;
+  box-shadow: 0 0 20px rgba(124,58,237,.35);
+}
+.mapBtn:hover { transform: translateY(-1px); box-shadow: 0 0 30px rgba(124,58,237,.55); }
+
+/* Loading */
+.mapLoading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 1rem;
+  color: #64748b;
+  font-size: .82rem;
+}
+
+.orbit {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid rgba(139,92,246,.2);
+  border-radius: 50%;
+  position: relative;
+  animation: rotate 1.2s linear infinite;
+}
+
+.orbitDot {
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: #8b5cf6;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(139,92,246,.8);
+}
+
+@keyframes rotate { to { transform: rotate(360deg); } }
+
+.error {
+  color: #f87171;
+  font-size: .8rem;
+  background: rgba(248,113,113,.08);
+  border: 1px solid rgba(248,113,113,.2);
+  border-radius: 6px;
+  padding: .5rem .75rem;
+}
+
+/* MAP result */
+.mapResult { display: flex; flex-direction: column; gap: .85rem; }
+
+.mapScores {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(139,92,246,.08);
+  border: 1px solid rgba(139,92,246,.2);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.mapScoreBox {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem 1rem;
+  gap: .3rem;
+}
+
+.mapScoreDivider {
+  width: 1px;
+  align-self: stretch;
+  background: rgba(139,92,246,.25);
+}
+
+.mapScoreValue {
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: #c4b5fd;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.mapScoreUnit { font-size: 1.2rem; margin-left: .1rem; }
+
+.mapScoreLbl {
+  font-size: .7rem;
+  color: #64748b;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.mapMeta {
+  font-size: .68rem;
+  color: #334155;
+  text-align: center;
+}
+
+.apList {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.apListHeader {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .65rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #475569;
+  padding-bottom: .3rem;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+
+.apClsHead { flex: 0 0 120px; }
+.apTopHead { flex: 1; text-align: right; padding-right: .25rem; }
+
+.apRow {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .7rem;
+}
+
+.apCls {
+  color: #64748b;
+  flex: 0 0 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.apBarWrap {
+  flex: 1;
+  height: 3px;
+  background: rgba(255,255,255,.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.apBar { height: 100%; border-radius: 2px; transition: width .5s; }
+
+.apVal { color: #94a3b8; width: 28px; text-align: right; flex-shrink: 0; font-variant-numeric: tabular-nums; }
+
+/* ── Footer ─────────────────────────────────────────────────── */
+.foot {
+  flex-shrink: 0;
+  padding: 1rem 2rem;
+  border-top: 1px solid rgba(255,255,255,.06);
+  background: rgba(7,8,13,.6);
+  backdrop-filter: blur(8px);
+}
+
+.newSearchBtnFoot {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.09);
+  color: #64748b;
+  padding: .55rem 1.25rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: .8rem;
+  transition: all .2s;
+}
+.newSearchBtnFoot:hover { color: #e2e8f0; border-color: rgba(255,255,255,.18); }

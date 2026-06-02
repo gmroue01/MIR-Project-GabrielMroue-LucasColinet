@@ -1,0 +1,128 @@
+{
+  "ResNet_ZeroShot": {
+    "dim_originale": 2048,
+    "dim_recommandee": 46,
+    "compression_pct": 97.8,
+    "memoire_orig_mb": 39.16,
+    "memoire_acp_mb": 0.88,
+    "memoire_economie_mb": 38.28,
+    "baseline_mAP": 1.45,
+    "acp_mAP": 1.38,
+    "delta_mAP": -0.06,
+    "baseline_recall": {
+      "Recall@1": 35.23,
+      "Recall@5": 61.18,
+      "Recall@10": 73.65
+    },
+    "acp_recall": {
+      "Recall@1": 32.04,
+      "Recall@5": 59.08,
+      "Recall@10": 71.96
+    }
+  },
+  "ViTBase_ZeroShot": {
+    "dim_originale": 768,
+    "dim_recommandee": 128,
+    "compression_pct": 83.3,
+    "memoire_orig_mb": 14.68,
+    "memoire_acp_mb": 2.45,
+    "memoire_economie_mb": 12.24,
+    "baseline_mAP": 1.8,
+    "acp_mAP": 2.07,
+    "delta_mAP": 0.27,
+    "baseline_recall": {
+      "Recall@1": 41.82,
+      "Recall@5": 68.06,
+      "Recall@10": 77.94
+    },
+    "acp_recall": {
+      "Recall@1": 45.51,
+      "Recall@5": 71.46,
+      "Recall@10": 81.54
+    }
+  },
+  "DinoV2_ZeroShot": {
+    "dim_originale": 256,
+    "dim_recommandee": 16,
+    "compression_pct": 93.8,
+    "memoire_orig_mb": 4.89,
+    "memoire_acp_mb": 0.31,
+    "memoire_economie_mb": 4.59,
+    "baseline_mAP": 7.65,
+    "acp_mAP": 7.54,
+    "delta_mAP": -0.11,
+    "baseline_recall": {
+      "Recall@1": 76.75,
+      "Recall@5": 92.02,
+      "Recall@10": 94.71
+    },
+    "acp_recall": {
+      "Recall@1": 75.25,
+      "Recall@5": 92.61,
+      "Recall@10": 95.71
+    }
+  },
+  "DinoV2_SuperCon": {
+    "dim_originale": 256,
+    "dim_recommandee": 9,
+    "compression_pct": 96.5,
+    "memoire_orig_mb": 4.89,
+    "memoire_acp_mb": 0.17,
+    "memoire_economie_mb": 4.72,
+    "baseline_mAP": 9.93,
+    "acp_mAP": 9.85,
+    "delta_mAP": -0.08,
+    "baseline_recall": {
+      "Recall@1": 91.92,
+      "Recall@5": 97.9,
+      "Recall@10": 99.0
+    },
+    "acp_recall": {
+      "Recall@1": 90.12,
+      "Recall@5": 98.0,
+      "Recall@10": 98.8
+    }
+  },
+  "MobileNetV2_ZeroShot": {
+    "dim_originale": 1280,
+    "dim_recommandee": 150,
+    "compression_pct": 88.3,
+    "memoire_orig_mb": 24.47,
+    "memoire_acp_mb": 2.87,
+    "memoire_economie_mb": 21.6,
+    "baseline_mAP": 1.01,
+    "acp_mAP": 1.19,
+    "delta_mAP": 0.18,
+    "baseline_recall": {
+      "Recall@1": 29.34,
+      "Recall@5": 55.59,
+      "Recall@10": 68.66
+    },
+    "acp_recall": {
+      "Recall@1": 32.24,
+      "Recall@5": 56.19,
+      "Recall@10": 68.66
+    }
+  },
+  "MobileNetV2_ArcFace": {
+    "dim_originale": 256,
+    "dim_recommandee": 41,
+    "compression_pct": 84.0,
+    "memoire_orig_mb": 4.89,
+    "memoire_acp_mb": 0.78,
+    "memoire_economie_mb": 4.11,
+    "baseline_mAP": 4.15,
+    "acp_mAP": 4.31,
+    "delta_mAP": 0.16,
+    "baseline_recall": {
+      "Recall@1": 50.7,
+      "Recall@5": 73.85,
+      "Recall@10": 81.74
+    },
+    "acp_recall": {
+      "Recall@1": 52.5,
+      "Recall@5": 73.95,
+      "Recall@10": 82.53
+    }
+  }
+}

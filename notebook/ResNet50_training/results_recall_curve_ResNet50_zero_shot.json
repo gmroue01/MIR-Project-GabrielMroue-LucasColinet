@@ -1,0 +1,11 @@
+{
+  "model": "recall_curve_ResNet50_zero_shot",
+  "recall": {
+    "@1": 37.21,
+    "@5": 63.33,
+    "@20": 85.61,
+    "@50": 95.13
+  },
+  "mAP": 2.81,
+  "n_images": 5012
+}
