@@ -8,7 +8,7 @@
 
 A full-stack **Content-Based Image Retrieval (CBIR)** system that lets you find visually similar car images using a range of classical and deep learning descriptors — with SIFT-RANSAC geometric reranking, PCA dimensionality reduction, and CLIP-based multimodal search.
 
-> Academic project — M2 Computer Vision, 2025–2026
+> Academic project — M1 Mutlimedia Retrieval, 2025–2026
 
 ---
 
