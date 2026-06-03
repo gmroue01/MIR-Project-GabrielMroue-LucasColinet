@@ -17,16 +17,21 @@ import numpy as np
 
 INDEX_DIR      = os.path.join(os.path.dirname(__file__), "..", "..", "indexes")
 _NPZ_PATH      = os.path.join(INDEX_DIR, "sift_ransac.npz")
+_PCA_PATH      = os.path.join(INDEX_DIR, "pca_sift_ransac.npz")
 
 _sift_data: Optional[dict] = None
+_pca_mode: Optional[bool] = None   # True when index contains PCA-reduced float16 descriptors
 _bf = cv2.BFMatcher(cv2.NORM_L2)
 
 
 def _load() -> Optional[dict]:
-    global _sift_data
+    global _sift_data, _pca_mode
     if _sift_data is None and os.path.exists(_NPZ_PATH):
         raw = np.load(_NPZ_PATH)
         _sift_data = {k: raw[k] for k in raw.files}
+        # PCA-reduced index stores float16 descriptors; original stores uint8
+        sample_key = next((k for k in raw.files if k.endswith("_des")), None)
+        _pca_mode = (sample_key is not None and raw[sample_key].dtype == np.float16)
     return _sift_data
 
 
@@ -42,9 +47,14 @@ def _inlier_count(q_kp, q_des, c_kp, c_des,
     if q_des is None or c_des is None:
         return 0
 
-    # Descriptors stored as uint8 (÷2 at index time) → restore float32
-    qf = q_des.astype(np.float32) * 2.0
-    cf = c_des.astype(np.float32) * 2.0
+    # PCA-reduced index: float16, already whitened+L2-normalised — cast only.
+    # Legacy index: uint8 (÷2 at index time) → restore float32.
+    if _pca_mode:
+        qf = q_des.astype(np.float32)
+        cf = c_des.astype(np.float32)
+    else:
+        qf = q_des.astype(np.float32) * 2.0
+        cf = c_des.astype(np.float32) * 2.0
 
     if len(qf) < 4 or len(cf) < 4:
         return 0

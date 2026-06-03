@@ -97,6 +97,16 @@ def main():
     size_mb = os.path.getsize(args.output) / 1024 ** 2
     n_imgs  = len(data) // 2          # two arrays per image
     print(f"Done. {n_imgs} images | {size_mb:.1f} MB")
+
+    # Apply PCA reduction automatically
+    print("\nApplying PCA reduction (32D) ...")
+    import importlib.util, pathlib
+    pca_script = pathlib.Path(__file__).parent / "apply_pca_sift.py"
+    spec = importlib.util.spec_from_file_location("apply_pca_sift", pca_script)
+    mod  = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    mod.main()
+
     print("Run the app and SIFT-RANSAC reranking will be available automatically.")
 
 
