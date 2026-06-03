@@ -57,26 +57,26 @@ pip install -r requirements.txt
 
 ### 3. Préparer les données
 
-Le dossier `dataset/` (5 012 images de voitures) n'est pas inclus dans le dépôt git. Il doit être placé à la racine du projet :
+Placez le dossier `dataset/` (5 012 images de voitures) à la racine du projet :
 
 ```
 MIR_Project/
-├── dataset/          ← images .jpg à placer ici
+├── dataset/
 │   ├── Acura Integra Type R 2001_0001.jpg
 │   └── ...
-├── indexes/          ← déjà inclus (pré-calculés)
+├── indexes/
 └── ...
 ```
 
-Les indexes pré-calculés (`indexes/*.npz`, `indexes/metrics.json`) sont déjà inclus dans le dépôt — **aucune ré-indexation n'est nécessaire** pour lancer l'application.
+Les indexes pré-calculés (`indexes/*.npz`, `indexes/metrics.json`) sont déjà inclus — **aucune ré-indexation n'est nécessaire** pour lancer l'application.
 
-> **Index SIFT (optionnel) :** le fichier `indexes/sift_ransac.npz` n'est pas inclus (trop volumineux). Pour activer le reranking SIFT-RANSAC, générez-le avec :
+> **Index SIFT (optionnel) :** pour activer le reranking SIFT-RANSAC, générez l'index avec :
 > ```bash
 > python scripts/generate_sift_index.py
 > ```
 > La réduction PCA (32D) est appliquée **automatiquement** à la suite — aucune étape supplémentaire n'est nécessaire.
 
-> **Index CLIP (optionnel) :** les fichiers `indexes_faiss/index_images.faiss` et `indexes_faiss/index_captions.faiss` ne sont pas inclus dans le dépôt. Pour activer la recherche CLIP/Flickr8K, générez-les avec :
+> **Index CLIP (optionnel) :** pour activer la recherche CLIP/Flickr8K, générez les index avec :
 > ```bash
 > python scripts/generate_faiss_index.py
 > ```
@@ -414,7 +414,7 @@ python scripts/apply_pca.py
 
 ### `generate_sift_index.py` — Index SIFT pour le reranking
 
-**Rôle :** extrait les descripteurs SIFT de chaque image du dataset et sauvegarde l'index dans `indexes/sift_ransac.npz`. Ce fichier n'est pas inclus dans le dépôt (trop volumineux), mais est requis pour activer le reranking SIFT-RANSAC dans l'interface.
+**Rôle :** extrait les descripteurs SIFT de chaque image du dataset et sauvegarde l'index dans `indexes/sift_ransac.npz`. Cet index est requis pour activer le reranking SIFT-RANSAC dans l'interface.
 
 La réduction PCA (32D) est **appliquée automatiquement** à la fin du script via `apply_pca_sift.py`. Le résultat final est un index réduit (~146 Mo, -27%) avec une qualité de matching améliorée (+32% d'inliers RANSAC).
 

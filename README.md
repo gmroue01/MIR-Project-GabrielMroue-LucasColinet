@@ -119,8 +119,8 @@ MIR_Project/
 │   ├── generate_sift_index.py  # Build SIFT-RANSAC index (runs apply_pca_sift automatically)
 │   └── generate_faiss_index.py # Build FAISS indexes for CLIP search
 │
-├── modelsV2/                   # Fine-tuned .pth weights (not in git)
-├── dataset/                    # Car images — 5 000 .jpg (not in git)
+├── modelsV2/                   # Fine-tuned .pth weights
+├── dataset/                    # Car images — 5 000 .jpg
 │
 ├── requirements.txt
 ├── run.py                      # App entry point
@@ -135,7 +135,7 @@ MIR_Project/
 ### Prerequisites
 
 - Python 3.11+
-- The `dataset/` folder (5,000 car images, not included in the repository)
+- The `dataset/` folder (5,000 car images)
 
 ### 1. Clone and install
 

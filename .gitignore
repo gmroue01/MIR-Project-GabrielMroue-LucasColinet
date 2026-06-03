@@ -4,7 +4,6 @@ __pycache__/
 *.pth
 *.faiss
 .env
-dataset/
 # Modèles entraînés — à obtenir séparément (voir README)
 modelsV2/
 # Logs serveur
