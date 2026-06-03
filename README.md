@@ -8,7 +8,7 @@
 
 A full-stack **Content-Based Image Retrieval (CBIR)** system that lets you find visually similar car images using a range of classical and deep learning descriptors — with SIFT-RANSAC geometric reranking, PCA dimensionality reduction, and CLIP-based multimodal search.
 
-> Academic project — M1 Mutlimedia Retrieval, 2025–2026
+> Academic project — M2 Computer Vision, 2025–2026
 
 ---
 
@@ -114,8 +114,10 @@ MIR_Project/
 │
 ├── scripts/                    # Utility scripts
 │   ├── compute_metrics.py      # Full re-indexing pipeline
-│   ├── apply_pca.py            # PCA reduction on existing indexes
-│   └── generate_sift_index.py  # Build SIFT-RANSAC index
+│   ├── apply_pca.py            # PCA reduction on DL indexes
+│   ├── apply_pca_sift.py       # PCA(32D) reduction on SIFT-RANSAC index
+│   ├── generate_sift_index.py  # Build SIFT-RANSAC index (runs apply_pca_sift automatically)
+│   └── generate_faiss_index.py # Build FAISS indexes for CLIP search
 │
 ├── modelsV2/                   # Fine-tuned .pth weights (not in git)
 ├── dataset/                    # Car images — 5 000 .jpg (not in git)
@@ -196,8 +198,10 @@ docker-compose up --build
 | Script | Purpose |
 |---|---|
 | `scripts/compute_metrics.py` | Full re-indexing from scratch (classical + DL + PCA) and update `metrics.json` |
-| `scripts/apply_pca.py` | Apply PCA reduction to existing `.npz` indexes without reloading `.pth` weights |
-| `scripts/generate_sift_index.py` | Build the `sift_ransac.npz` index (~200 MB, required for geometric reranking) |
+| `scripts/apply_pca.py` | Apply PCA reduction to existing DL `.npz` indexes without reloading `.pth` weights |
+| `scripts/apply_pca_sift.py` | Apply PCA(32D) to the SIFT-RANSAC index — 27% size reduction, +32% RANSAC inliers |
+| `scripts/generate_sift_index.py` | Build the `sift_ransac.npz` index and automatically apply PCA(32D) (~146 MB, required for geometric reranking) |
+| `scripts/generate_faiss_index.py` | Build the FAISS indexes for CLIP cross-modal search (`index_images.faiss`, `index_captions.faiss`) |
 
 ---
 

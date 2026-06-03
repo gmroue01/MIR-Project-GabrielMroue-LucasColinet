@@ -74,6 +74,13 @@ Les indexes pré-calculés (`indexes/*.npz`, `indexes/metrics.json`) sont déjà
 > ```bash
 > python scripts/generate_sift_index.py
 > ```
+> La réduction PCA (32D) est appliquée **automatiquement** à la suite — aucune étape supplémentaire n'est nécessaire.
+
+> **Index CLIP (optionnel) :** les fichiers `indexes_faiss/index_images.faiss` et `indexes_faiss/index_captions.faiss` ne sont pas inclus dans le dépôt. Pour activer la recherche CLIP/Flickr8K, générez-les avec :
+> ```bash
+> python scripts/generate_faiss_index.py
+> ```
+> Nécessite le dossier `Flickr8k/Images/` et `Flickr8k/captions.txt`. Durée estimée : ~5 min CPU, ~1 min GPU.
 
 ### 4. Variables d'environnement (optionnel)
 
@@ -142,6 +149,14 @@ python run.py
 ## Accès à l'application
 
 Ouvrez l'URL de l'application dans votre navigateur. Une page de connexion s'affiche.
+
+> ### 🔑 Mot de passe par défaut
+>
+> ```
+> admin
+> ```
+>
+> Ce mot de passe est configuré sur le déploiement Railway. En local sans variable `APP_PASSWORD`, l'application démarre sans authentification.
 
 Entrez le mot de passe, puis cliquez sur **Connexion →** (ou appuyez sur Entrée).
 
@@ -356,7 +371,7 @@ Les résultats affichent pour chaque direction (Texte→Image et Image→Texte) 
 
 ## Scripts utilitaires
 
-Le dossier `scripts/` contient trois scripts Python indépendants. Ils ne sont **pas nécessaires pour faire tourner l'application** (les indexes sont pré-calculés), mais permettent de régénérer ou recalibrer les données si besoin.
+Le dossier `scripts/` contient cinq scripts Python indépendants. Ils ne sont **pas nécessaires pour faire tourner l'application** (les indexes sont pré-calculés), mais permettent de régénérer ou recalibrer les données si besoin.
 
 ---
 
@@ -399,13 +414,48 @@ python scripts/apply_pca.py
 
 ### `generate_sift_index.py` — Index SIFT pour le reranking
 
-**Rôle :** extrait les descripteurs SIFT de chaque image du dataset et sauvegarde l'index dans `indexes/sift_ransac.npz`. Ce fichier n'est pas inclus dans le dépôt (trop volumineux — ~200 Mo), mais est requis pour activer le reranking SIFT-RANSAC dans l'interface.
+**Rôle :** extrait les descripteurs SIFT de chaque image du dataset et sauvegarde l'index dans `indexes/sift_ransac.npz`. Ce fichier n'est pas inclus dans le dépôt (trop volumineux), mais est requis pour activer le reranking SIFT-RANSAC dans l'interface.
+
+La réduction PCA (32D) est **appliquée automatiquement** à la fin du script via `apply_pca_sift.py`. Le résultat final est un index réduit (~146 Mo, -27%) avec une qualité de matching améliorée (+32% d'inliers RANSAC).
 
 ```bash
 python scripts/generate_sift_index.py
 ```
 
 > Prend plusieurs minutes selon la machine. À lancer une seule fois.
+
+---
+
+### `apply_pca_sift.py` — Réduction PCA de l'index SIFT
+
+**Rôle :** applique une réduction PCA (32 dimensions, whitening + L2-normalisation) à un index `sift_ransac.npz` existant (uint8, 128D). Produit également le modèle PCA dans `indexes/pca_sift_ransac.npz`.
+
+> Ce script est appelé automatiquement par `generate_sift_index.py`. Ne l'exécutez manuellement que si vous disposez déjà d'un `sift_ransac.npz` original non réduit.
+
+```bash
+python scripts/apply_pca_sift.py
+```
+
+| Avant | Après |
+|---|---|
+| 128D, uint8, ~200 Mo | 32D, float16, ~146 Mo (-27%) |
+| 4,3 inliers RANSAC moy. | 5,7 inliers RANSAC moy. (+32%) |
+
+---
+
+### `generate_faiss_index.py` — Index FAISS pour la recherche CLIP
+
+**Rôle :** encode toutes les images et captions du dataset Flickr8K avec le modèle CLIP (ViT-B/32) et sauvegarde les index FAISS dans `indexes_faiss/`. Ces fichiers sont requis pour activer la section CLIP de l'interface.
+
+```bash
+python scripts/generate_faiss_index.py
+```
+
+> Nécessite `Flickr8k/Images/` (8 091 images) et `Flickr8k/captions.txt`. Durée estimée : ~5 min CPU, ~1 min GPU.
+
+Produit :
+- `indexes_faiss/index_images.faiss` — 8 091 vecteurs image (512D)
+- `indexes_faiss/index_captions.faiss` — 40 455 vecteurs caption (512D)
 
 ---
 
@@ -466,6 +516,7 @@ Cliquez sur le bouton **⏻** en haut à droite de la barre de navigation pour v
 |---|---|
 | La page met longtemps à charger | Le premier accès charge les indexes en mémoire (~2-5s). Les requêtes suivantes sont plus rapides. |
 | La recherche CLIP texte est lente | Le modèle CLIP (~175 Mo) est chargé à la première requête texte. Les suivantes sont quasi-instantanées. |
-| "Index SIFT non disponible" | Le reranking SIFT nécessite un index généré séparément. Contactez l'administrateur. |
+| "Index SIFT non disponible" | Lancez `python scripts/generate_sift_index.py` (la réduction PCA s'applique automatiquement). |
+| "Index CLIP non disponible" | Lancez `python scripts/generate_faiss_index.py` (nécessite le dossier `Flickr8k/`). |
 | "Mot de passe incorrect" | Après 5 tentatives erronées, l'accès est bloqué 5 minutes. |
 | Les images ne s'affichent pas | Vérifiez votre connexion. Les images sont servies depuis le même serveur que l'API. |
